@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1",
+  "complete": true,
+  "seed": 7,
+  "domain": { "min": 0, "max": 10 },
+  "caseCount": 10,
+  "invariants": [{ "kind": "multipleOf", "value": 4 }]
+}
