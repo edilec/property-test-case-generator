@@ -7,7 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { generateCases, LIMITS, parseStrictJson } from '../src/index.mjs';
 
 const doc = (invariants = [{ kind: 'atLeast', value: 0 }, { kind: 'atMost', value: 10 }], domain = { min: 0, max: 10 }, caseCount = 10) => ({ schemaVersion: '1', complete: true, seed: 7, domain, caseCount, invariants });
-const run = (root, input) => spawnSync(process.execPath, ['bin/property-test-case-generator.mjs', '--root', root, '--input', input], { cwd: new URL('..', import.meta.url), encoding: 'utf8', env: { ...process.env, NODE_OPTIONS: `--import=${new URL('../../migration-plan-template/support/deny-network.mjs', import.meta.url).href}` } });
+const run = (root, input) => spawnSync(process.execPath, ['bin/property-test-case-generator.mjs', '--root', root, '--input', input], { cwd: new URL('..', import.meta.url), encoding: 'utf8', env: { ...process.env, NODE_OPTIONS: `--import=${new URL('./deny-network.mjs', import.meta.url).href}` } });
 
 test('good bounded seeded numeric invariants pass reproducibly', () => {
   const x = doc(); const a = generateCases(x), b = generateCases(x);
